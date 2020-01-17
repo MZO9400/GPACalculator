@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./custom.css";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 
 class GPACalculator extends React.Component {
   constructor(props) {
@@ -16,45 +15,45 @@ class GPACalculator extends React.Component {
     this.addSemester = this.addSemester.bind(this);
   }
   count = 0;
-  handleCHChange(e) {
-    let index = parseInt(e.target.id);
+  handleCHChange(event) {
+    let index = parseInt(event.target.id);
     if (isNaN(index)) {
       index = 0;
     }
-    let col = parseInt(e.target.getAttribute("col"));
+    let col = parseInt(event.target.getAttribute("col"));
     if (isNaN(col)) {
       col = 0;
     }
-    let value = e.target.value;
+    let value = event.target.value;
     this.setState(state => (state.Semesters[col][index].CreditHours = value));
   }
-  handleGradeChange(e) {
-    let index = parseInt(e.target.id);
+  handleGradeChange(event) {
+    let index = parseInt(event.target.id);
     if (isNaN(index)) {
       index = 0;
     }
-    let col = parseInt(e.target.getAttribute("col"));
+    let col = parseInt(event.target.getAttribute("col"));
     if (isNaN(col)) {
       col = 0;
     }
-    let value = e.target.value;
+    let value = event.target.value;
     this.setState(state => (state.Semesters[col][index].Grade = value));
   }
-  handleNameChange(e) {
-    let index = parseInt(e.target.id);
+  handleNameChange(event) {
+    let index = parseInt(event.target.id);
     if (isNaN(index)) {
       index = 0;
     }
-    let col = parseInt(e.target.getAttribute("col"));
+    let col = parseInt(event.target.getAttribute("col"));
     if (isNaN(col)) {
       col = 0;
     }
-    let value = e.target.value;
+    let value = event.target.value;
     this.setState(state => (state.Semesters[col][index].Name = value));
   }
   returnSubjectJSON(value, col) {
     return (
-      <Form key={value}>
+      <Form key={value} class="subject">
         <Form.Control
           onChange={this.handleNameChange}
           placeholder="Enter Subject Name"
@@ -96,16 +95,34 @@ class GPACalculator extends React.Component {
   getSems() {
     let sems = [];
     for (let i = 0; i <= this.count; i++) {
+      let GPA = this.calculateGPA(i);
+      let color = "";
+      if (GPA > 3.1) {
+        color = "btn btn-success";
+      } else if (GPA > 2.1) {
+        color = "btn btn-info";
+      } else if (GPA > 1.1) {
+        color = "btn btn-warning";
+      } else {
+        color = "btn btn-danger";
+      }
       sems.push(
         <div className="innerdiv" key={i}>
-          <Button onClick={this.insertNewSubject} id={i}>
+          <button
+            type="button"
+            class="btn btn-success"
+            onClick={this.insertNewSubject}
+            id={i}
+          >
             Add Subject
-          </Button>
+          </button>
           <br />
           {this.state.Semesters[i].map((val, index = 0) =>
             this.returnSubjectJSON(index, i)
           )}
-          <Button disabled>{this.calculateGPA(i)}</Button>
+          <button type="button" class={color} disabled>
+            {GPA}
+          </button>
         </div>
       );
     }
@@ -156,15 +173,31 @@ class GPACalculator extends React.Component {
     });
   }
   render() {
+    let CGPA = this.calculateCGPA();
+    let color = "";
+    if (CGPA > 3.1) {
+      color = "btn btn-success";
+    } else if (CGPA > 2.1) {
+      color = "btn btn-info";
+    } else if (CGPA > 1.1) {
+      color = "btn btn-warning";
+    } else {
+      color = "btn btn-danger";
+    }
     return (
       <div id="maindiv">
-        <Button id="NewSemester" onClick={this.addSemester}>
+        <button
+          type="button"
+          class="btn btn-info"
+          id="NewSemester"
+          onClick={this.addSemester}
+        >
           +
-        </Button>
+        </button>
         <div className="semesters">{this.getSems()}</div>
-        <Button id="GPA" disabled>
-          {this.calculateCGPA()}
-        </Button>
+        <button type="button" class={color} id="GPA" disabled>
+          {CGPA.toFixed(2)}
+        </button>
       </div>
     );
   }

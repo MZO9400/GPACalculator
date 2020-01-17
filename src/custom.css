@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(25, 25, 25, 1);
+  background-color: #121212;
   color: white;
 }
 #maindiv {
@@ -15,7 +15,32 @@ body {
   margin-left: 2em;
   min-width: 20em;
 }
+.form-control {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  color: inherit;
+  background-color: inherit;
+  margin-bottom: 0.2em;
+  border-radius: 0.25em;
+}
+.form-control:focus {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  color: inherit;
+  background-color: inherit;
+  margin-bottom: 0.2em;
+  border-radius: 0.25em;
+}
+select option {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  color: inherit;
+  background-color: #121212;
+  margin-bottom: 0.2em;
+  border-radius: 0.25em;
+}
 form {
+  margin-top: 1em;
   min-width: 25%;
   border-bottom: solid;
   border-bottom-width: thin;
