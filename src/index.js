@@ -94,8 +94,8 @@ class GPACalculator extends React.Component {
     );
   }
   getSems() {
-    var sems = [];
-    for (var i = 0; i <= this.count; i++) {
+    let sems = [];
+    for (let i = 0; i <= this.count; i++) {
       sems.push(
         <div className="innerdiv" key={i}>
           <Button onClick={this.insertNewSubject} id={i}>
@@ -128,7 +128,7 @@ class GPACalculator extends React.Component {
   calculateGPA(col) {
     let gradePoint = 0;
     let creditHourCount = 0;
-    for (var i = 0; i < this.state.Semesters[col].length; i++) {
+    for (let i = 0; i < this.state.Semesters[col].length; i++) {
       gradePoint +=
         parseInt(this.state.Semesters[col][i].CreditHours) *
         parseFloat(this.state.Semesters[col][i].Grade);
