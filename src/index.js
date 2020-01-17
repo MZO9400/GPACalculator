@@ -82,12 +82,13 @@ class GPACalculator extends React.Component {
     var sems = [];
     for (var i = 0; i <= this.count; i++) {
       sems.push(
-        <div class="innerdiv">
+        <div className="innerdiv" key={i}>
           <Button onClick={this.insertNewSubject}>Add Subject</Button>
           <br />
           {this.state.Subjects.map((val, index = 0) =>
             this.returnSubjectJSON(index)
           )}
+          <Button disabled>{this.calculateGPA()}</Button>
         </div>
       );
     }
@@ -123,7 +124,7 @@ class GPACalculator extends React.Component {
         <Button id="NewSemester" onClick={this.addSemester}>
           +
         </Button>
-        <div class="semesters">{this.getSems()}</div>
+        <div className="semesters">{this.getSems()}</div>
         <Button id="GPA" disabled>
           {this.calculateGPA()}
         </Button>
