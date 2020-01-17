@@ -1,0 +1,26 @@
+body {
+  background-color: rgba(25, 25, 25, 1);
+  color: white;
+}
+div {
+  align-items: center;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+form {
+  min-width: 25%;
+  border-bottom: solid;
+  border-bottom-width: thin;
+  border-bottom-color: grey;
+}
+button {
+  width: 100%;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+#GPA {
+  width: auto;
+  right: 50px;
+  bottom: 2em;
+  position: fixed;
+}
