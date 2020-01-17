@@ -9,11 +9,9 @@ body {
 }
 .semesters {
   padding-left: 2em;
-  align-items: center;
   display: flex;
 }
 .innerdiv {
-  align-items: center;
   margin-left: 2em;
   min-width: 20em;
 }
