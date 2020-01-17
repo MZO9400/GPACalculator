@@ -144,7 +144,7 @@ class GPACalculator extends React.Component {
     if (
       Sems[id][Sems[id].length - 1].Name.length === 0 ||
       Sems[id][Sems[id].length - 1].CreditHours <= 0 ||
-      Sems[id][Sems[id].length - 1].CreditHours >= 5
+      Sems[id][Sems[id].length - 1].CreditHours > 5
     ) {
       alert("Please fill the previous data before proceeding");
       return;
