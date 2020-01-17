@@ -140,11 +140,8 @@ class GPACalculator extends React.Component {
   }
   insertNewSubject(event) {
     let id = parseInt(event.target.id);
-    console.log(id);
     let Sems = this.state.Semesters;
-    console.log(Sems);
     Sems[id].push({ Name: "", Grade: 0, CreditHours: 0 });
-    console.log(Sems);
     this.setState({
       Semesters: Sems
     });
