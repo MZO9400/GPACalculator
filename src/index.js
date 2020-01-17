@@ -142,9 +142,10 @@ class GPACalculator extends React.Component {
     let id = parseInt(event.target.id);
     let Sems = this.state.Semesters;
     if (
-      Sems[id][Sems[id].length - 1].Name.length === 0 ||
-      Sems[id][Sems[id].length - 1].CreditHours <= 0 ||
-      Sems[id][Sems[id].length - 1].CreditHours > 5
+      Sems[id][Sems[id].length - 1] &&
+      (Sems[id][Sems[id].length - 1].Name.length === 0 ||
+        Sems[id][Sems[id].length - 1].CreditHours <= 0 ||
+        Sems[id][Sems[id].length - 1].CreditHours > 5)
     ) {
       alert("Please fill the previous data before proceeding");
       return;
