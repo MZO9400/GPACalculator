@@ -2,10 +2,20 @@ body {
   background-color: rgba(25, 25, 25, 1);
   color: white;
 }
-div {
+#maindiv {
   align-items: center;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.semesters {
+  padding-left: 2em;
+  align-items: center;
+  display: flex;
+}
+.innerdiv {
+  align-items: center;
+  margin-left: 2em;
+  min-width: 20em;
 }
 form {
   min-width: 25%;
@@ -23,4 +33,12 @@ button {
   right: 50px;
   bottom: 2em;
   position: fixed;
+}
+#NewSemester {
+  width: auto;
+  height: 90%;
+  position: fixed;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  left: 2em;
 }

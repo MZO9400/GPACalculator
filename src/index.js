@@ -13,7 +13,9 @@ class GPACalculator extends React.Component {
     this.handleGradeChange = this.handleGradeChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleCHChange = this.handleCHChange.bind(this);
+    this.addSemester = this.addSemester.bind(this);
   }
+  count = 0;
   handleCHChange(e) {
     let index = parseInt(e.target.id);
     if (isNaN(index)) {
@@ -76,6 +78,26 @@ class GPACalculator extends React.Component {
       </Form>
     );
   }
+  getSems() {
+    var sems = [];
+    for (var i = 0; i <= this.count; i++) {
+      sems.push(
+        <div class="innerdiv">
+          <Button onClick={this.insertNewSubject}>Add Subject</Button>
+          <br />
+          {this.state.Subjects.map((val, index = 0) =>
+            this.returnSubjectJSON(index)
+          )}
+        </div>
+      );
+    }
+    return sems;
+  }
+  addSemester() {
+    this.count++;
+    this.forceUpdate();
+    return this.getSems();
+  }
   calculateGPA() {
     let gradePoint = 0;
     let creditHourCount = 0;
@@ -95,13 +117,13 @@ class GPACalculator extends React.Component {
     });
   }
   render() {
+    console.log(this.count);
     return (
-      <div>
-        <Button onClick={this.insertNewSubject}>+</Button>
-        <br />
-        {this.state.Subjects.map((val, index = 0) =>
-          this.returnSubjectJSON(index)
-        )}
+      <div id="maindiv">
+        <Button id="NewSemester" onClick={this.addSemester}>
+          +
+        </Button>
+        <div class="semesters">{this.getSems()}</div>
         <Button id="GPA" disabled>
           {this.calculateGPA()}
         </Button>
