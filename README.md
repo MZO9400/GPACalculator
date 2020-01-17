@@ -1,3 +1,5 @@
+## Link to deployed app [here](https://mzo9400.github.io/GPACalculator).
+###
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
